@@ -1,0 +1,5 @@
+package com.infogain.requests;
+
+public class LikeRequest {
+
+}

@@ -1,0 +1,18 @@
+package com.infogain.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.infogain.dto.MovieDTO;
+
+@RestController
+@RequestMapping("/recommend")
+public class RecommendationController {
+
+	public List<MovieDTO> getMovies() {
+		
+	}
+	
+}

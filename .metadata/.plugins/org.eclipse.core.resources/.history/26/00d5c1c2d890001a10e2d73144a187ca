@@ -1,0 +1,37 @@
+package com.infogain.clients;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.infogain.dto.MovieDTO;
+import com.infogain.dto.UserDTO;
+import com.infogain.fallbacks.MovieClientHystrixFallback;
+import com.infogain.request.CreateUserRequest;
+
+//@FeignClient(value = "movieclient", url = "http://localhost:9090/movie")
+@FeignClient(name = "MOVIE-SERVICE", fallback = MovieClientHystrixFallback.class)
+public interface MovieClient {
+	
+	@PostMapping("/user/")
+	MovieDTO createMovie(@RequestBody @Valid CreateMovieRequest request);
+
+	 @GetMapping("/movie/")
+	 List<MovieDTO> getAllMovies();
+	 
+	 @GetMapping("/movie/{movieId}")
+	 MovieDTO getMovieById(@PathVariable Long movieId);
+	 
+	 @GetMapping("/movie/list")
+	 List<MovieDTO> getMoviesById(@RequestParam List<Long> ids);
+	 
+	 @GetMapping("/movie/dummyData")
+	 void insertDummyData();
+}

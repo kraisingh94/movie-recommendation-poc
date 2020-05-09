@@ -1,0 +1,22 @@
+package com.infogain.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "follow_metadata")
+public class FollowingUserEntity implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Column(name = "user_id")
+	private Integer userId;
+	@Column(name = "following_user_id")
+	private Integer followingUserId;
+
+}

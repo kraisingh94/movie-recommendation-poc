@@ -1,0 +1,62 @@
+package com.infogain.service;
+
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.infogain.entity.FollowingUserEntity;
+import com.infogain.entity.RecommendEntity;
+import com.infogain.repository.FollowingRepository;
+import com.infogain.repository.RecommendRepository;
+import com.infogain.requests.FollowRequest;
+import com.infogain.requests.LikeRequest;
+
+@Service
+public class RecommendationService implements IRecommendService{
+
+	@Autowired
+	private RecommendRepository recommendRepository;
+	
+	@Autowired
+	private FollowingRepository followingRepository;
+	
+	@Override
+	public RecommendEntity updateUserLikedMovie(LikeRequest request, boolean isLiked) {
+		RecommendEntity recommendEntity = recommendRepository.findByUserIdAndMovieId(request.getUserId(), request.getMovieId());
+		if(!Objects.nonNull(recommendEntity)) {
+			recommendEntity = new RecommendEntity();
+			recommendEntity.setMovieId(request.getMovieId());
+			recommendEntity.setUserId(request.getUserId());
+		} 
+		if(isLiked) {
+			recommendEntity.setIsLiked(isLiked);
+			recommendEntity.setIsDesliked(false);
+		}
+		else {
+			recommendEntity.setIsLiked(false);
+			recommendEntity.setIsDesliked(isLiked);
+		}
+		return recommendRepository.save(recommendEntity);
+	}
+
+	@Override
+	public FollowingUserEntity updateFollowRequest(FollowRequest request) {
+		FollowingUserEntity followingEntity = followingRepository.findByUserIdAndFollowingUserId(request.getFollowerId(), request.getFollowingUserid());
+		if(Objects.nonNull(followingEntity)) {
+			followingEntity = new FollowingUserEntity(request.getFollowerId(), request.getFollowingUserid());
+			followingEntity = followingRepository.saveAndFlush(followingEntity);
+		}
+		return followingEntity;
+	}
+	
+	@Override
+	public void updateUnfollowRequest(FollowRequest request) {
+		FollowingUserEntity followingEntity = followingRepository.findByUserIdAndFollowingUserId(request.getFollowerId(), request.getFollowingUserid());
+		if(Objects.nonNull(followingEntity)) {
+			followingRepository.delete(followingEntity);
+		}
+	}
+
+	
+}

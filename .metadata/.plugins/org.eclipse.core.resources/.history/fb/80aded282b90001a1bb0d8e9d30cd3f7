@@ -1,0 +1,70 @@
+package com.infogain.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.infogain.clients.MovieClient;
+import com.infogain.clients.UserClient;
+import com.infogain.dto.MovieDTO;
+import com.infogain.dto.UserDTO;
+import com.infogain.entity.FollowingUserEntity;
+import com.infogain.entity.RecommendEntity;
+import com.infogain.requests.FollowRequest;
+import com.infogain.requests.LikeRequest;
+import com.infogain.service.IRecommendService;
+
+@RestController
+@RequestMapping("/recommend")
+public class RecommendationController {
+	
+	@Autowired
+	private MovieClient movieClient;
+	
+	@Autowired
+	private UserClient userClient;
+	
+	@Autowired
+	private IRecommendService recommendService;
+
+	@GetMapping("/movies")
+	public List<MovieDTO> getMovies() {
+		return movieClient.getAllMovies();
+	}
+	
+	@GetMapping("/users")
+	public List<UserDTO> getUsers() {
+		return userClient.getAllUsers();
+	}
+	
+	@PutMapping("/liked")
+	public RecommendEntity postLikedMovie(@RequestBody LikeRequest request) {
+		return recommendService.updateUserLikedMovie(request, true);
+	}
+	
+	@PutMapping("/disliked")
+	public RecommendEntity postDislikedMovie(@RequestBody LikeRequest request) {
+		return recommendService.updateUserLikedMovie(request, false);
+	}
+	
+	@PutMapping("/follow")
+	public FollowingUserEntity postFollowRequest(@RequestBody FollowRequest request) {
+		return recommendService.updateFollowRequest(request);
+	}
+	
+	@PutMapping("/unfollow")
+	public String postUnfollowRequest(@RequestBody FollowRequest request) {
+		boolean isUnfollowed = recommendService.updateUnfollowRequest(request);
+		if(isUnfollowed) {
+			return "Unfollowed successfully";
+		} else {
+			return "Unfollowed failed, Please try again";
+		}
+	}
+	
+}

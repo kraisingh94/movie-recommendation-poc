@@ -1,0 +1,30 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761
+  instance:
+    hostname: localhost
+    
+server:
+  port: 9797
+  
+spring:
+  application:
+    name: GATEWAY-SERVICE 
+    
+zuul:  host:    connect-timeout-millis: 500000
+    socket-timeout-millis: 500000
+  routes:    USER-SERVICE:
+      path: /user/**
+      service-id: USER-SERVICE
+      strip-prefix: true
+    MOVIE-SERVICE:
+      path: /movie/**
+      service-id: MOVIE-SERVICE
+      strip-prefix: true
+    MOVIE-RECOMMENDATION-SERVICE:
+      path: /recommend/**
+      service-id: MOVIE-RECOMMENDATION-SERVICE
+      strip-prefix: true         

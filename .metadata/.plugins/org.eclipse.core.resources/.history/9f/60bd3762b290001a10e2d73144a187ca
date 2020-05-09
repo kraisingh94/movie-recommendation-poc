@@ -1,0 +1,15 @@
+package com.infogain.service;
+
+import com.infogain.entity.FollowingUserEntity;
+import com.infogain.entity.RecommendEntity;
+import com.infogain.requests.FollowRequest;
+import com.infogain.requests.LikeRequest;
+
+public interface IRecommendService {
+
+	RecommendEntity updateUserLikedMovie(LikeRequest request, boolean isLiked);
+	
+	FollowingUserEntity updateFollowRequest(FollowRequest request);
+
+	boolean updateUnfollowRequest(FollowRequest request);
+}

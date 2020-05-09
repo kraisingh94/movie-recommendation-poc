@@ -1,0 +1,20 @@
+package com.infogain.clients;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.infogain.dto.MovieDTO;
+
+//@FeignClient(value = "movieclient", url = "http://localhost:9090/movie")
+@FeignClient(name = "MOVIE-SERVICE")
+public interface MovieClient {
+
+	 @GetMapping("/movie/")
+	 public List<MovieDTO> getAllMovies();
+	 
+	 @GetMapping("/movie/list")
+	 public List<MovieDTO> getMoviesById(@RequestParam List<Integer> ids);
+}

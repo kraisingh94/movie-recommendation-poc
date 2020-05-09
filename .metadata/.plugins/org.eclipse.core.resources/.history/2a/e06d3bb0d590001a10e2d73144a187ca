@@ -1,0 +1,27 @@
+package com.infogain.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.infogain.dto.UserDTO;
+import com.infogain.entity.UserEntity;
+import com.infogain.repository.UserRepository;
+
+public class UserServiceImpl implements IUserService {
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Override
+	public UserDTO createUser(UserDTO userDto) {
+		UserEntity userEntity = new UserEntity();
+    	userEntity.setEmail(userDto.getEmail());
+    	userEntity.setName(userDto.getName());
+    	userEntity.setMobileNo(userDto.getMobileNo());
+    	userEntity.setPassword(userEntity.getPassword());
+    	userEntity = userRepository.saveAndFlush(userEntity);
+    	userDto.setId(userEntity.getId());
+    	userDto.setPassword(null);
+    	return userDto;
+	}
+
+}

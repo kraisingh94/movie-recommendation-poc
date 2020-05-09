@@ -1,0 +1,8 @@
+package com.infogain.dto;
+
+public class Snippet {
+	public static void main(String[] args) {
+		import org.neo4j.ogm.annotation.GraphId;
+	}
+}
+

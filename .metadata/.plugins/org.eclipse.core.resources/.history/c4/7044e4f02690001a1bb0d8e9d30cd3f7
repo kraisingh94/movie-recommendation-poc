@@ -1,0 +1,14 @@
+package com.infogain.repository;
+
+import java.io.Serializable;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.infogain.entity.FollowingUserEntity;
+
+
+@Repository
+public interface FollowingRepository extends JpaRepository<FollowingUserEntity, Serializable>{
+
+}

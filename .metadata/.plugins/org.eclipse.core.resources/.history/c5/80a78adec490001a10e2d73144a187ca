@@ -1,0 +1,21 @@
+package com.infogain.service;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@FeignClient("recommendation-service")
+public interface RecommendationService {
+    
+    @PostMapping("/recommendation/like")
+    Object likeAnyMovie();
+    
+    @PostMapping("/recommendation/unlike")
+    Object unlikeAnyMovie();
+    
+    @PostMapping("/recommendation/follow")
+    Object followAnyUser();
+    
+    @PostMapping("/recommendation/unfollow")
+    Object unfollowAnyUser();
+    
+}

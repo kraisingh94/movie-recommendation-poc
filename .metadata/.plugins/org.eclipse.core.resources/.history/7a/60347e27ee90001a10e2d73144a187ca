@@ -1,0 +1,18 @@
+package com.infogain.service;
+
+import java.util.Collection;
+
+import com.infogain.dto.MovieDTO;
+
+public interface IMovieService {
+
+	MovieDTO createMovie(MovieDTO movieDto);
+	
+	Collection<MovieDTO> getAllMovies();
+	
+	Collection<MovieDTO> getMoviesById();
+	
+	MovieDTO findMovieById();
+	
+	void insertDummyData();
+}

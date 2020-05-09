@@ -1,0 +1,5 @@
+package com.infogain.request;
+
+public class CreateUserRequest {
+
+}

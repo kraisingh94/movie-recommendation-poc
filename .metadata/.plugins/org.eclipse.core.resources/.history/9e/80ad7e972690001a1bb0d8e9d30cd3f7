@@ -1,0 +1,8 @@
+package com.infogain.service;
+
+import com.infogain.entity.RecommendEntity;
+
+public interface IRecommendService {
+
+	public RecommendEntity updateUserLikedMovie(Integer userId, Integer movieId, boolean isLiked);
+}

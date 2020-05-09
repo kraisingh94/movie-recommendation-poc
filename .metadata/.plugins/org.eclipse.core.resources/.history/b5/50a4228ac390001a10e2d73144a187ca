@@ -1,0 +1,16 @@
+package com.infogain.clients;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.infogain.dto.UserDTO;
+
+//@FeignClient(value = "userclient", url = "http://localhost:9091/user")
+@FeignClient(name = "USER-SERVICE")
+public interface UserClient {
+
+	 @GetMapping("/user/")
+	 public List<UserDTO> getAllUsers();
+}

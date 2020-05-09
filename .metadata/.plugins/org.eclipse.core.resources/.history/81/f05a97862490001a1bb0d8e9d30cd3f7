@@ -1,0 +1,23 @@
+package com.infogain.entity;
+
+import javax.persistence.Id;
+
+public class FollowingUserId {
+
+	private Integer userId;
+	private Integer followingUserId;
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	public Integer getFollowingUserId() {
+		return followingUserId;
+	}
+	public void setFollowingUserId(Integer followingUserId) {
+		this.followingUserId = followingUserId;
+	}
+	
+	
+}

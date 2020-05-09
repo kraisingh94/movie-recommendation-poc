@@ -1,0 +1,5 @@
+package com.infogain.exception;
+
+public class UserAdviceController {
+
+}

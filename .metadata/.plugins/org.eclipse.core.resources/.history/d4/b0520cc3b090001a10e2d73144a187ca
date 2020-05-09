@@ -1,0 +1,5 @@
+package com.infogain.exceptions;
+
+public class MovieNotFoundException extends RuntimeException {
+
+}
