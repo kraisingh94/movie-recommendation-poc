@@ -1,9 +1,0 @@
-package com.infogain.requests;
-
-import javax.validation.constraints.NotBlank;
-
-public class CreateMovieRequest {
-
-	@NotBlank
-	private String name;
-}

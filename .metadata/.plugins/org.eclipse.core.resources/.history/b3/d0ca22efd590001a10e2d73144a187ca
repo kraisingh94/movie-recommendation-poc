@@ -1,8 +1,0 @@
-package com.infogain.service;
-
-import com.infogain.dto.UserDTO;
-
-public interface IUserService {
-
-	UserDTO createUser(UserDTO userDto);
-}

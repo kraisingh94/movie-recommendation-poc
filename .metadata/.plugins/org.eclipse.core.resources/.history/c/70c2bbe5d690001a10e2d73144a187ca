@@ -1,5 +1,0 @@
-package com.infogain.exception;
-
-public class UserNotFoundException {
-
-}

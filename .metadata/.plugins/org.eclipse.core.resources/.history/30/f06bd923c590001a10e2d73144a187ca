@@ -1,5 +1,0 @@
-package com.infogain.clients;
-
-public interface RecommendationClient {
-
-}

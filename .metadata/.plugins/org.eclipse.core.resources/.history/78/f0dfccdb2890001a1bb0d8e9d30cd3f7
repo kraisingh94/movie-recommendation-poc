@@ -1,5 +1,0 @@
-package com.infogain.requests;
-
-public class FollowRequest {
-
-}
