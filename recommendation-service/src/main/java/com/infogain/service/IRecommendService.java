@@ -16,5 +16,5 @@ public interface IRecommendService {
 
 	boolean updateUnfollowRequest(FollowRequest request);
 	
-	List<MovieDTO> getRecommendationForUser(Integer userId);
+	List<MovieDTO> getRecommendationForUser(Long userId);
 }

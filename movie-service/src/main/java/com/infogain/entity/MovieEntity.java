@@ -58,5 +58,9 @@ public class MovieEntity {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+
+	public void setId(Long id) {
+		this.id = id;
+	}
     
 }   

@@ -5,19 +5,19 @@ import javax.validation.constraints.NotNull;
 public class FollowRequest {
 
 	@NotNull(message = "followerId can not be null or empty")
-	private Integer followerId;
+	private Long followerId;
 	@NotNull(message = "followingUserId can not be null or empty")
-	private Integer followingUserid;
-	public Integer getFollowerId() {
+	private Long followingUserid;
+	public Long getFollowerId() {
 		return followerId;
 	}
-	public void setFollowerId(Integer followerId) {
+	public void setFollowerId(Long followerId) {
 		this.followerId = followerId;
 	}
-	public Integer getFollowingUserid() {
+	public Long getFollowingUserid() {
 		return followingUserid;
 	}
-	public void setFollowingUserid(Integer followingUserid) {
+	public void setFollowingUserid(Long followingUserid) {
 		this.followingUserid = followingUserid;
 	}
 	

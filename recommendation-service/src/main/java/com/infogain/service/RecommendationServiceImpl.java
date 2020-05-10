@@ -18,7 +18,7 @@ import com.infogain.request.FollowRequest;
 import com.infogain.request.LikeRequest;
 
 @Service
-public class RecommendationService implements IRecommendService{
+public class RecommendationServiceImpl implements IRecommendService{
 
 	@Autowired
 	private RecommendRepository recommendRepository;
@@ -68,14 +68,14 @@ public class RecommendationService implements IRecommendService{
 		return false;
 	}
 	
-	public List<MovieDTO> getRecommendationForUser(Integer userId) {
+	public List<MovieDTO> getRecommendationForUser(Long userId) {
 		List<FollowingUserEntity> followingUserList = followingRepository.findByUserId(userId);
-		List<Integer> followingUserIdList = followingUserList.stream().map(FollowingUserEntity::getFollowingUserId).collect(Collectors.toList());
+		List<Long> followingUserIdList = followingUserList.stream().map(FollowingUserEntity::getFollowingUserId).collect(Collectors.toList());
 		List<RecommendRepository.MovieDTO> recommendMovieList = null;
 		List<MovieDTO> movieList = new ArrayList<>();
 		if(!followingUserIdList.isEmpty()) {
 			List<RecommendEntity> recommendList = recommendRepository.findByUserIdInAndIsLiked(followingUserIdList, true);
-			List<Integer> movieIdList = recommendList.stream().map(RecommendEntity::getMovieId).collect(Collectors.toList());
+			List<Long> movieIdList = recommendList.stream().map(RecommendEntity::getMovieId).collect(Collectors.toList());
 			recommendMovieList = recommendRepository.getRecommendedTop5MovieIds(movieIdList);
 		} else {
 			recommendMovieList = recommendRepository.getTop5MovieIds();

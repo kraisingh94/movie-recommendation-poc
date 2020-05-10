@@ -12,8 +12,8 @@ import com.infogain.entity.FollowingUserEntity;
 @Repository
 public interface FollowingRepository extends JpaRepository<FollowingUserEntity, Serializable>{
 
-	FollowingUserEntity findByUserIdAndFollowingUserId(Integer userId, Integer followingUserId);
+	FollowingUserEntity findByUserIdAndFollowingUserId(Long userId, Long followingUserId);
 	
-	List<FollowingUserEntity> findByUserId(Integer userId);
+	List<FollowingUserEntity> findByUserId(Long userId);
 	
 }

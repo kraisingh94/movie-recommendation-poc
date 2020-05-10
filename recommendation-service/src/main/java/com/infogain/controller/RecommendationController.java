@@ -69,7 +69,7 @@ public class RecommendationController {
 	}
 	
 	@GetMapping("/recommendation/{userId}")
-	public List<MovieDTO> getRecommendedMovies(@PathVariable Integer userId) {
+	public List<MovieDTO> getRecommendedMovies(@PathVariable Long userId) {
 		return recommendService.getRecommendationForUser(userId);
 	}
 	

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: MOVIE-RECOMMENDATION-SERVICE
+    
+  profiles:
+    active: local
+    
+  cloud:
+    config:
+      uri: http://localhost:9595
+      fail-fast: false    

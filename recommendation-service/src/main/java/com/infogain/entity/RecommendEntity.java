@@ -22,9 +22,9 @@ public class RecommendEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name = "movie_id")
-	private Integer movieId;
+	private Long movieId;
 	@Column(name = "user_id")
-	private Integer userId;
+	private Long userId;
 	@Column(name = "is_movie_liked")
 	private Boolean isLiked;
 	@Column(name = "is_movie_disliked")
@@ -39,19 +39,19 @@ public class RecommendEntity implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getMovieId() {
+	public Long getMovieId() {
 		return movieId;
 	}
 
-	public void setMovieId(Integer movieId) {
+	public void setMovieId(Long movieId) {
 		this.movieId = movieId;
 	}
 
-	public Integer getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

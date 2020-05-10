@@ -33,6 +33,10 @@ public class UserEntity implements Serializable {
 
     @Column(name = "mobile_no")
     private Long mobileNo;
+    
+	public void setId(Long id) {
+		Id = id;
+	}
 
 	public Long getId() {
 		return Id;
